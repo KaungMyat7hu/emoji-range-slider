@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Emoji Range Slider</title>
+
+<style type="text/css">
+	
+* { margin:0;
+    padding:0; }
+
+body { height:100vh;
+       display:flex;
+       justify-content: center;
+       align-items:center;
+       background:linear-gradient(purple,red); }
+
+.wrapper { padding:30px 40px;
+          border-radius:20px;
+          background:white; }
+
+.section { width:300px;
+          height:300px;
+          overflow: hidden;
+           }
+
+.section .emojis { width:100%;
+                   height:500%; 
+                   display: flex;
+                   flex-direction: column;}
+
+.emojis li { list-style-type:none;width:100%;height:20%;
+             transition:.2s ease-in; }
+
+.emojis img { width:100%;
+              height:100%; }
+
+
+.slider { width:100%;
+          height:20px;
+          background:rgba(25,25,25,.35);
+          margin:40px 0 auto;
+          position: relative; 
+          border-radius: 40px;}
+
+
+.slider input { width:100%;
+                height:100%;
+                background:none;
+                border-radius: 40px;
+                appearance: none;
+                position:absolute; }
+
+.slider input::-webkit-slider-thumb { width:32px;
+                                       height:32px;
+                                       background: none;
+                                       -webkit-appearance:none; }
+
+.slider .thumb { width:35px;
+                 height:35px;
+                 border-radius:50%;
+                 background:rgba(150,50,200,1);
+                 position:absolute;
+                 top:50%;
+                 transform: translate(-50%,-50%);
+                 box-shadow:inset 0 0 5px rgba(0,0,0,.75); }
+
+.slider .progress-bar { width:0%;
+                        height:100%;
+                        border-radius:40px;
+                        background:linear-gradient(90deg,purple,red);
+                        position:absolute; }
+
+
+
+</style>
+
+</head>
+<body>
+
+<div class = "wrapper">
+	<div class = "section">
+	<div class = "emojis">
+		<li class = "image"> <img src = "Img 5.jpg"></li>
+		<li> <img src = "Img 4.jpg"></li>
+		<li> <img src = "Img 3.jpg"></li>
+		<li> <img src = "Img 2.jpg"></li>
+		<li> <img src = "Img 1.jpg"></li>
+	</div>
+    </div>
+
+<div class = "slider">
+	<div class = "progress-bar"></div>
+	<div class = "thumb"> <span></span> </div>
+<input type = "range" min = "0" max = "100" value = "0">
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+	
+
+var slider   = document.querySelector("input");
+var progress = document.querySelector(".progress-bar");
+var thumb    = document.querySelector(".thumb");
+var image    = document.querySelector(".image");
+
+
+slider.addEventListener("input",()=>{
+var number = slider.value;
+thumb.style.left = number + "%";
+progress.style.width = number + '%';
+
+if(number<20) { image.style.marginTop = "0%"}
+if(number>20 && number <=40) { image.style.marginTop = "-100%"}
+if(number>40 && number <=60) { image.style.marginTop = "-200%"}
+if(number>60 && number <=80) { image.style.marginTop = "-300%"}
+if(number>80 && number <=100) { image.style.marginTop = "-400%"}
+
+
+})
+
+
+</script>
+
+
+
+
+</body>
+</html>
